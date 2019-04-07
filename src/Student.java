@@ -19,6 +19,9 @@ public class Student {
 		this.midterm = midterm;
 		this.project = project;
 		this.finals = finals;
+		this.finalGrade = (0.45 * ((hw1+hw2+hw3)/3)) + 
+				(0.25 * project) + 
+				(0.3 * ((midterm + finals)/2));
 	}
 
 	public String getName() {
@@ -77,12 +80,6 @@ public class Student {
 		this.finals = finals;
 	}
 	
-	public void calculateFinalGrade() {
-		this.finalGrade = (0.45 * ((hw1+hw2+hw3)/3)) + 
-				(0.25 * project) + 
-				(0.3 * ((midterm + finals)/2));
-	}
-	
 	public double getFinalGrade() {
 		return finalGrade;
 	}
@@ -106,6 +103,25 @@ public class Student {
 		
 		return letterGrade;
 			
+	}
+	
+	public String toString() {
+		
+		String outputString = "";
+		
+		outputString += "Name: " + this.name + "\n";
+		outputString += "HW1: " + this.hw1 + "\n";
+		outputString += "HW2: " + this.hw2 + "\n";
+		outputString += "HW3: " + this.hw3 + "\n";
+		outputString += "Midterm: " + this.midterm + "\n";
+		outputString += "Project: " + this.project + "\n";
+		outputString += "Final: " + this.finals + "\n";
+		outputString += "=============================\n";
+		outputString += "Final Grade: " + this.getLetterGrade() + " - " + 
+				this.finalGrade + "\n";
+		
+		return outputString;
+		
 	}
 
 }
