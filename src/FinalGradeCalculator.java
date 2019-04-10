@@ -55,9 +55,7 @@ public class FinalGradeCalculator {
 			}
 		}
 
-		/**
-		 * TODO GUI
-		 */
+		GradesGUI myGradesGUI = new GradesGUI(roster);
 		
 	}
 
