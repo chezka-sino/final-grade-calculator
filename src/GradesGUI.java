@@ -16,13 +16,11 @@ public class GradesGUI extends JFrame {
 		JFrame frame = new JFrame("Final Grades");
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setMinimumSize(new Dimension(500,300));
+		frame.setMaximumSize(new Dimension(350,500));
 		
 		JPanel testJPanel = new JPanel();
 		testJPanel.setLayout(new BoxLayout(testJPanel, BoxLayout.PAGE_AXIS));
 		
-		Dimension labelDimensionPref = new Dimension(500,30);
-			
 		String[] colnames = new String[] {
 				"Name", "Final Grade"
 		};
@@ -60,25 +58,34 @@ public class GradesGUI extends JFrame {
 			counter++;
 		}
 		
-		// TODO center labels
+		JTable gradeTable = new JTable(data, colnames);
+		JTable finalGradeCount = new JTable(counts, countColnames);
+		
+		
+		for (int i = 0; i < 2; i++) {
+			if (i == 0) {
+				gradeTable.getColumnModel().getColumn(i).setMaxWidth(250);
+				finalGradeCount.getColumnModel().getColumn(i).setMaxWidth(250);
+			}
+			else {
+				gradeTable.getColumnModel().getColumn(i).setMaxWidth(100);
+				finalGradeCount.getColumnModel().getColumn(i).setMaxWidth(100);
+			}
+			
+			
+		}
+		
+		
 		JLabel label1 = new JLabel("Student Final Grades");
-		label1.setMinimumSize(labelDimensionPref);
-		label1.setMaximumSize(labelDimensionPref);
-		label1.setPreferredSize(labelDimensionPref);
 		testJPanel.add(label1);
 		
-		JTable gradeTable = new JTable(data, colnames);
 		JScrollPane scrollPane1 = new JScrollPane(gradeTable);
 		testJPanel.add(scrollPane1);
 		
 		JLabel label2 = new JLabel("Final Grade Counts");
-		label2.setMinimumSize(labelDimensionPref);
-		label2.setMaximumSize(labelDimensionPref);
-		label2.setPreferredSize(labelDimensionPref);
 		testJPanel.add(label2);
 		
-		// TODO set preferred size
-		JTable finalGradeCount = new JTable(counts, countColnames);
+		
 		JScrollPane scrollPane2 = new JScrollPane(finalGradeCount);
 		testJPanel.add(scrollPane2);
 		
