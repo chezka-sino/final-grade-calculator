@@ -75,7 +75,7 @@ public class GradesGUI extends JFrame {
 			
 		}
 		
-		
+		// TODO remove extra white space bottom of the tables
 		JLabel label1 = new JLabel("Student Final Grades");
 		testJPanel.add(label1);
 		
