@@ -6,14 +6,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 
+ * 
+ * @author Chezka Sino
+ *
+ */
 public class FinalGradeCalculator {
 
 	public static void main(String[] args) {
 		 
 		// Will contain list of Student objects from the input file
 		ArrayList<Student> roster = new ArrayList<>();
-		
-		HashMap<Character, Integer> gradeCounts = new HashMap<Character, Integer>();
 
 		Path inputFile = Paths.get("student_grades_input.txt");
 		
@@ -43,16 +47,6 @@ public class FinalGradeCalculator {
 			
 		} catch (IOException e) {
 			System.err.println("Unable to read file: " + inputFile.toString());
-		}
-		
-		for (Student s:roster) {
-			System.out.println(s.toString());
-			if (!gradeCounts.containsKey(s.getLetterGrade())) {
-				gradeCounts.put(s.getLetterGrade(), 1);
-			}
-			else {
-				gradeCounts.put(s.getLetterGrade(), gradeCounts.get(s.getLetterGrade()) + 1);
-			}
 		}
 
 		GradesGUI myGradesGUI = new GradesGUI(roster);

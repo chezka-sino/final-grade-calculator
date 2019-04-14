@@ -12,7 +12,7 @@ import javax.swing.JTable;
 /**
  * Generates a GUI showing the final letter grades of students
  * 
- * @author chezkasino
+ * @author Chezka Sino
  *
  */
 public class GradesGUI extends JFrame {
