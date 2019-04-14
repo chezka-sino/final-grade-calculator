@@ -9,8 +9,22 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+/**
+ * Generates a GUI showing the final letter grades of students
+ * 
+ * @author chezkasino
+ *
+ */
 public class GradesGUI extends JFrame {
 	
+	/**
+	 * GUI constructor
+	 * 
+	 * @param roster
+	 * 		ArrayList containing the roster of the students with grades as 
+	 * 		Student objects
+	 * 
+	 */
 	public GradesGUI(ArrayList<Student> roster) {
 		
 		JFrame frame = new JFrame("Final Grades");
@@ -18,22 +32,27 @@ public class GradesGUI extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setMaximumSize(new Dimension(350,500));
 		
-		JPanel testJPanel = new JPanel();
-		testJPanel.setLayout(new BoxLayout(testJPanel, BoxLayout.PAGE_AXIS));
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
+		// Column names for the final letter grades
 		String[] colnames = new String[] {
 				"Name", "Final Grade"
 		};
+		
+		// Column names for the count of final letter grades for the class
 		String[] countColnames = new String[] {
 				"Final Grade", "Count"
 		};
 		
-		HashMap<Character, Integer> gradeCounts = new HashMap<Character, Integer>();
-		
+		// Contains the students letter grades
 		Object[][]data = new Object[roster.size()][2];
+		// Contains the counts of letter grades for the class
+		HashMap<Character, Integer> gradeCounts = new HashMap<Character, Integer>();
 		
 		int counter = 0;
 		
+		// Populates the data containers for the grades
 		for (Student s:roster) {
 			data[counter][0] = s.getName();
 			data[counter][1] = s.getLetterGrade();
@@ -48,20 +67,20 @@ public class GradesGUI extends JFrame {
 			
 		}
 		
-		Object[][]counts = new Object[gradeCounts.size()][2];
-		
+		// Converts the hashmap for grade counts to an array for the table
+		Object[][]counts = new Object[gradeCounts.size()][2];		
 		counter = 0;
-		
 		for (char c:gradeCounts.keySet()) {
 			counts[counter][0] = c;
 			counts[counter][1] = gradeCounts.get(c);
 			counter++;
 		}
 		
+		// Creates the table GUI
 		JTable gradeTable = new JTable(data, colnames);
 		JTable finalGradeCount = new JTable(counts, countColnames);
 		
-		
+		// Sets the column widths of the tables
 		for (int i = 0; i < 2; i++) {
 			if (i == 0) {
 				gradeTable.getColumnModel().getColumn(i).setMaxWidth(250);
@@ -76,20 +95,23 @@ public class GradesGUI extends JFrame {
 		}
 		
 		// TODO remove extra white space bottom of the tables
+		
+		// Final Grade roster
 		JLabel label1 = new JLabel("Student Final Grades");
-		testJPanel.add(label1);
+		panel.add(label1);
 		
 		JScrollPane scrollPane1 = new JScrollPane(gradeTable);
-		testJPanel.add(scrollPane1);
+		panel.add(scrollPane1);
 		
+		// Final grade counts
 		JLabel label2 = new JLabel("Final Grade Counts");
-		testJPanel.add(label2);
+		panel.add(label2);
 		
 		
 		JScrollPane scrollPane2 = new JScrollPane(finalGradeCount);
-		testJPanel.add(scrollPane2);
+		panel.add(scrollPane2);
 		
-		frame.add(testJPanel);
+		frame.add(panel);
 		
 		frame.pack();
 		frame.setVisible(true);
