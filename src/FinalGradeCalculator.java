@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * 
+ * Main driver for the Final Grade Calculator
  * 
  * @author Chezka Sino
  *
@@ -19,8 +19,10 @@ public class FinalGradeCalculator {
 		// Will contain list of Student objects from the input file
 		ArrayList<Student> roster = new ArrayList<>();
 
+		// TODO argument file name input instead
 		Path inputFile = Paths.get("student_grades_input.txt");
 		
+		// Reads the file input
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
 			
 			// Reads the header line
@@ -28,10 +30,12 @@ public class FinalGradeCalculator {
 			
 			String line;
 			
+			// Reads each line of the file
 			while ((line = reader.readLine()) != null) {
 				
 				String[] grades = line.split(",");
 				
+				// Stores each element of the array and converts type as needed
 				String name = grades[0];
 				int hw1 = Integer.parseInt(grades[1]);
 				int hw2 = Integer.parseInt(grades[2]);
@@ -40,6 +44,7 @@ public class FinalGradeCalculator {
 				int project = Integer.parseInt(grades[5]);
 				int finals = Integer.parseInt(grades[6]);
 				
+				// Creates a Student object
 				Student student = new Student(name, hw1, hw2, hw3, midterm, project, finals);
 				roster.add(student);
 				
@@ -49,6 +54,7 @@ public class FinalGradeCalculator {
 			System.err.println("Unable to read file: " + inputFile.toString());
 		}
 
+		// Initializes the GUI
 		GradesGUI myGradesGUI = new GradesGUI(roster);
 		
 	}
