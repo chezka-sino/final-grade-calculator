@@ -19,8 +19,8 @@ public class FinalGradeCalculator {
 		// Will contain list of Student objects from the input file
 		ArrayList<Student> roster = new ArrayList<>();
 
-		// TODO argument file name input instead
-		Path inputFile = Paths.get("student_grades_input.txt");
+		// Gets the filename as passed as an argument
+		Path inputFile = Paths.get(args[0]);
 		
 		// Reads the file input
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
