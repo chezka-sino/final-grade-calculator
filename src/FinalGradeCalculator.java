@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Main driver for the Final Grade Calculator
@@ -53,10 +52,10 @@ public class FinalGradeCalculator {
 		} catch (IOException e) {
 			System.err.println("Unable to read file: " + inputFile.toString());
 		}
-
+		
 		// Initializes the GUI
 		GradesGUI myGradesGUI = new GradesGUI(roster);
-		
+
 	}
 
 }
