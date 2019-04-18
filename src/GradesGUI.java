@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 /**
  * Generates a GUI showing the final letter grades of students
  * 
@@ -17,6 +19,7 @@ import javax.swing.JTable;
  */
 public class GradesGUI extends JFrame {
 	
+	private final char[] LETTER_GRADES = {'A', 'B', 'C', 'D', 'F'};
 	/**
 	 * GUI constructor
 	 * 
@@ -50,6 +53,11 @@ public class GradesGUI extends JFrame {
 		// Contains the counts of letter grades for the class
 		HashMap<Character, Integer> gradeCounts = new HashMap<Character, Integer>();
 		
+		// Initializes letter grade counts
+		for (char c:LETTER_GRADES) {
+			gradeCounts.put(c, 0);
+		}
+		
 		int counter = 0;
 		
 		// Populates the data containers for the grades
@@ -57,13 +65,8 @@ public class GradesGUI extends JFrame {
 			data[counter][0] = s.getName();
 			data[counter][1] = s.getLetterGrade();
 			counter++;
-			
-			if (!gradeCounts.containsKey(s.getLetterGrade())) {
-				gradeCounts.put(s.getLetterGrade(), 1);
-			}
-			else {
-				gradeCounts.put(s.getLetterGrade(), gradeCounts.get(s.getLetterGrade()) + 1);
-			}
+						
+			gradeCounts.put(s.getLetterGrade(), gradeCounts.get(s.getLetterGrade()) + 1);
 			
 		}
 		
@@ -93,8 +96,6 @@ public class GradesGUI extends JFrame {
 			
 			
 		}
-		
-		// TODO remove extra white space bottom of the tables
 		
 		// Final Grade roster
 		JLabel label1 = new JLabel("Student Final Grades");
