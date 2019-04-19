@@ -93,8 +93,7 @@ public class GradesGUI extends JFrame {
 				gradeTable.getColumnModel().getColumn(i).setMaxWidth(100);
 				finalGradeCount.getColumnModel().getColumn(i).setMaxWidth(100);
 			}
-			
-			
+		
 		}
 		
 		// Final Grade roster
@@ -107,7 +106,6 @@ public class GradesGUI extends JFrame {
 		// Final grade counts
 		JLabel label2 = new JLabel("Final Grade Counts");
 		panel.add(label2);
-		
 		
 		JScrollPane scrollPane2 = new JScrollPane(finalGradeCount);
 		panel.add(scrollPane2);
